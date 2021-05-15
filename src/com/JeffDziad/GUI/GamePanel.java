@@ -209,6 +209,7 @@ public class GamePanel extends JPanel implements ActionListener {
         g.setFont(new Font("Monospaced Bold", Font.BOLD, 25));
         FontMetrics fm = getFontMetrics(g.getFont());
         g.drawString("Rainbow Snake!", (SCREEN_WIDTH - fm.stringWidth("Rainbow Snake")) / 2, SCREEN_HEIGHT / 5);
+        g.drawString("Use Arrow Keys for Controls.", (SCREEN_WIDTH - fm.stringWidth("Use Arrow Keys for Controls.")) / 2, SCREEN_HEIGHT / 3);
         g.drawString("Press SPACE to start!", (SCREEN_WIDTH - fm.stringWidth("Press SPACE to start!")) / 2, SCREEN_HEIGHT / 2);
     }
     /**
