@@ -51,7 +51,7 @@ public class GamePanel extends JPanel implements ActionListener {
      * Adds default parts to the snakes body.
      * Done before the game timer is started.
      */
-    public void setupStartingSnake() {
+    private void setupStartingSnake() {
         //Create Head
         bodyParts.add(new Part(new GreenStrategy()));
         //Create attached parts
@@ -65,7 +65,7 @@ public class GamePanel extends JPanel implements ActionListener {
      * Instantiates the timer variable and starts the game timer.
      * Uses a DELAY to keep the game at a steady pace.
      */
-    public void startGame() {
+    private void startGame() {
         timer = new Timer(DELAY,this);
         timer.start();
     }
@@ -112,7 +112,7 @@ public class GamePanel extends JPanel implements ActionListener {
      * Each part is given a random X, and Y value.
      * If there are more than 5 parts on the grid, addPart() does nothing.
      */
-    public void addPart() {
+    private void addPart() {
         if(parts.size() < 5)
         {
             Part newPart = factory.getPart();
@@ -126,7 +126,7 @@ public class GamePanel extends JPanel implements ActionListener {
      * Takes the last part in bodyParts and changes is X and Y to the X and Y of the bodyPart one index away in the negative direction.
      * Changes the direction of the snake based on boolean direction's value.
      */
-    public void move() {
+    private void move() {
         //moves all body parts over one
         for(int i = bodyParts.size() - 1; i > 0; i--) {
             bodyParts.get(i).setX(bodyParts.get(i - 1).getX());
@@ -150,7 +150,7 @@ public class GamePanel extends JPanel implements ActionListener {
      * After the loop is over, and since only one part can be collided with at once, the part that was collided with
      * is removed from the parts list.
      */
-    public void checkPartCollision() {
+    private void checkPartCollision() {
         int count = 0;
         int collisionId = -1;
         for(Part part: parts) {
@@ -168,7 +168,7 @@ public class GamePanel extends JPanel implements ActionListener {
      * If there is a collision, set gameOver to true, and running to false.
      * Checks if the X and Y values of the head equal the boarders of the grid to signify a collision with a wall.
      */
-    public void checkCollisions() {
+     private void checkCollisions() {
         for(int i = bodyParts.size() - 1; i>0; i--) {
             if((bodyParts.get(0).getX() == bodyParts.get(i).getX()) && (bodyParts.get(0).getY() == bodyParts.get(i).getY())) {
                 gameOver = true;
@@ -204,7 +204,7 @@ public class GamePanel extends JPanel implements ActionListener {
      * @param g passed in during the draw() method. Used to edit the graphics of the screen.
      * Prints out name of game and how to start.
      */
-    public void startingScreen(Graphics g) {
+    private void startingScreen(Graphics g) {
         g.setColor(Color.BLUE);
         g.setFont(new Font("Monospaced Bold", Font.BOLD, 25));
         FontMetrics fm = getFontMetrics(g.getFont());
@@ -217,7 +217,7 @@ public class GamePanel extends JPanel implements ActionListener {
      * @param g passed in during the draw() method. Used to edit the graphics of the screen.
      * Prints out that you died and the amount of parts you collected.
      */
-    public void gameOver(Graphics g) {
+    private void gameOver(Graphics g) {
         g.setColor(Color.RED);
         g.setFont(new Font("Monospaced Bold", Font.BOLD, 75));
         FontMetrics fm = getFontMetrics(g.getFont());
